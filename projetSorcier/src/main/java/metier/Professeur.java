@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.persistence.*;
 
+@Entity
 @DiscriminatorValue("professeur")
 public class Professeur extends Sorcier{
 

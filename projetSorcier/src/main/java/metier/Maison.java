@@ -15,7 +15,9 @@ public class Maison {
 	
 	public Maison (){}
 	
+
 	public Maison(String nom) {
+
 		this.nom = nom;
 	}
 	
@@ -55,11 +57,14 @@ public class Maison {
 		this.eleves = eleves;
 	}
 	
+<<<<<<< HEAD
 	public void addE(Eleve e){
 		this.eleves.add(e);
 	}
 	
 }
 	
+=======
+>>>>>>> 35f5ff7274ba7487006648542d7aa0732fe29ae2
 
 

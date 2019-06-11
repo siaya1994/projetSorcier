@@ -13,6 +13,7 @@ public class Matiere {
 	private String nom;
 	@OneToMany
 	private List<Sort> sort = new ArrayList<Sort>();
+	@OneToOne(mappedBy="matiere")
 	private Professeur professeur;
 	
 	
