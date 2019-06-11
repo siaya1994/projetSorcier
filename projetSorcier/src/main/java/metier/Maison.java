@@ -15,6 +15,16 @@ public class Maison {
 	
 	public Maison (){}
 	
+	
+	
+	public Maison(String nom, Professeur professeur) {
+		super();
+		this.nom = nom;
+		this.professeur = professeur;
+	}
+
+
+
 	public Maison(String nom, Integer score, Professeur professeur, List<Eleve> eleves) {
 		super();
 		this.nom = nom;
@@ -58,8 +68,6 @@ public class Maison {
 	public void setEleves(List<Eleve> eleves) {
 		this.eleves = eleves;
 	}
-	
-	
 	
 
 }
