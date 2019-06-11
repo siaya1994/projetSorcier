@@ -5,7 +5,6 @@ import java.util.*;
 import javax.persistence.*;
 
 @DiscriminatorValue("professeur")
-
 public class Professeur extends Sorcier{
 
 @OneToOne

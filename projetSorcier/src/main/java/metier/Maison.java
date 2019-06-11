@@ -15,12 +15,8 @@ public class Maison {
 	
 	public Maison (){}
 	
-	public Maison(String nom, Integer score, Professeur professeur, List<Eleve> eleves) {
-		super();
+	public Maison(String nom) {
 		this.nom = nom;
-		this.score = score;
-		this.professeur = professeur;
-		this.eleves = eleves;
 	}
 	
 	public String toString() {
@@ -59,7 +55,11 @@ public class Maison {
 		this.eleves = eleves;
 	}
 	
+	public void addE(Eleve e){
+		this.eleves.add(e);
+	}
 	
+}
 	
 
-}
+
