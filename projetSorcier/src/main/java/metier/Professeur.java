@@ -4,7 +4,9 @@ import java.util.*;
 
 import javax.persistence.*;
 
-public class Professeur {
+@DiscriminatorValue("professeur")
+
+public class Professeur extends Sorcier{
 
 @OneToOne
 private Matiere matiere ;
@@ -12,19 +14,23 @@ private Matiere matiere ;
 
 public Professeur(){}
 
-public Professeur(List<Matiere> matieres) {
+
+public Professeur(Matiere matiere) {
 	super();
-	this.matieres = matieres;
-	
+	this.matiere = matiere;
 }
 
-public List<Matiere> getMatieres() {
-	return matieres;
+
+public Matiere getMatiere() {
+	return matiere;
 }
 
-public void setMatieres(List<Matiere> matieres) {
-	this.matieres = matieres;
+
+public void setMatiere(Matiere matiere) {
+	this.matiere = matiere;
 }
+
+
 
 
 

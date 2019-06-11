@@ -2,11 +2,18 @@ package metier;
 
 import java.util.*;
 
+import javax.persistence.*;
+
+@Entity
+
 public class Matiere {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String nom;
+	@OneToMany
 	private List<Sort> sort = new ArrayList<Sort>();
-	//private Professeur professeur;
+	private Professeur professeur;
 	
 	
 	
@@ -46,12 +53,12 @@ public class Matiere {
 	}
 	
 	
-//	public Professeur getProfesseur() {
-//		return professeur;
-//	}
-//	public void setProfesseur(Professeur professeur) {
-//		this.professeur = professeur;
-//	}
+	public Professeur getProfesseur() {
+		return professeur;
+	}
+	public void setProfesseur(Professeur professeur) {
+		this.professeur = professeur;
+	}
 	
 	
 	

@@ -1,8 +1,15 @@
 package metier;
 
+import java.util.List;
+
 import javax.persistence.*;
 
-public class Eleve {
+
+@Entity
+@DiscriminatorValue("eleve")
+public class Eleve extends Sorcier {
+	
+	
 	
 	private Maison maison;
 	
@@ -17,6 +24,13 @@ public class Eleve {
 		this.maison = maison;
 		this.matieres = matieres;
 	}
+	
+	public Eleve( String nom, String prenom, Integer age, Civilite civ, Patronus patronus, Maison maison, List<Matiere> matieres) {
+		super (nom, prenom, age, civ, patronus);
+		this.maison = maison;
+		this.matieres = matieres;
+	}
+	
 
 	public Maison getMaison() {
 		return maison;

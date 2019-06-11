@@ -26,7 +26,7 @@ public abstract class Sorcier {
 	public Sorcier() {
 	}
 
-	public Sorcier(String nom, String prenom, Integer age) {
+	public Sorcier(String nom, String prenom, Integer age, Civilite civ, Patronus patronus) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;

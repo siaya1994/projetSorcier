@@ -1,6 +1,12 @@
 package metier;
 
+import javax.persistence.*;
+
+@Entity
 public class Sort {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String libelle;
 	private Matiere matiere;
 	private Type_sort type_sort;
