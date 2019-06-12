@@ -16,9 +16,12 @@ public class TestConsole {
 
 	static String maisonSelect;
 
-	static DaoSorcier daoS = new DaoSorcier();
+	static DaoProfesseur doaP = new DaoProfesseur();
+	static DaoEleve doaE = new DaoEleve();
 	static DaoMaison daoMai = new DaoMaison();
 	static DaoMatiere daoMat = new DaoMatiere();
+	static DaoSort daoS = new DaoSort();
+	
 
 	public static void console() {
 
@@ -141,7 +144,10 @@ public class TestConsole {
 	}
 
 	private static void selectEleve() {
-		// choisir un élève parmi la liste d'élèves
+		for (Eleve e : daoE.selectAll()) {
+
+			System.out.println(s);
+		}
 
 	}
 
