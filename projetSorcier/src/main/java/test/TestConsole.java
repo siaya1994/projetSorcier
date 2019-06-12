@@ -16,13 +16,13 @@ public class TestConsole {
 
 	static String maisonSelect;
 
-	static DaoProfesseur doaP = new DaoProfesseur();
-	static DaoEleve doaE = new DaoEleve();
+	static DaoProfesseur daoP = new DaoProfesseur();
+    static DaoEleve daoE = new DaoEleve();
 	static DaoMaison daoMai = new DaoMaison();
 	static DaoMatiere daoMat = new DaoMatiere();
 	static DaoSort daoS = new DaoSort();
 	
-
+//ok
 	public static void console() {
 
 		System.out.println(
@@ -52,6 +52,7 @@ public class TestConsole {
 
 	}
 
+	//ok
 	public static void gestionMaisons() {
 		System.out.println(
 				"GESTION DES MAISONS! \nQuelles sont vos intentions? \nAjouter une maison -> 1 \nConsulter une maison -> 2 "
@@ -82,7 +83,7 @@ public class TestConsole {
 		Maison maiG = new Maison("nom");
 		daoMai.insert(maiG);
 	}
-
+	//ok
 	public static void seeMaison() {
 		System.out.println(
 				"Choisir une maison :  \nGryffondor -> 1 \nPoufsouffle -> 2 " + "\nSerdaigle -> 3 \nSerpentard -> 4");
@@ -145,14 +146,27 @@ public class TestConsole {
 
 	private static void selectEleve() {
 		for (Eleve e : daoE.selectAll()) {
-
-			System.out.println(s);
+			System.out.println(e);
+		}
+		System.out.println("Sélectionner le nom de l'élève à ajouter à la maison?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		
+		daoE.selectByName("nom");
+		// Modifier la maison de l'élève et le rajouter à la liste élève de la maison
+		// retourner au menu ajouter élève
+	
 		}
 
-	}
-
 	private static void selectProf() {
-
+		for (Professeur p : daoP.selectAll()) {
+			System.out.println(p);
+		}
+		System.out.println("Choisir le nouveau professeur principal de la maison?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		
+		daoP.selectByName("nom");
+		// Modifier la maison de l'élève et le rajouter à la liste élève de la maison
+		// retourner au menu ajouter élève
 	}
 
 	private static void gestionEleves() {
