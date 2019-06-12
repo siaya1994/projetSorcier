@@ -113,6 +113,7 @@ public class TestConsole {
 		}
 	}
 
+	//ok
 	private static void updateMaison() {
 
 		System.out.println("Quelles sont vos intentions? \nAjouter des points -> 1 \nAjouter un élève -> 2 "
@@ -141,7 +142,6 @@ public class TestConsole {
 		System.out.println("Combien de points voulez-vous ajouter à la maison?");
 		Integer addpts = clavierInt.nextInt();
 		maisonSelect.addPts(addpts);
-
 	}
 
 	private static void selectEleve() {
@@ -151,9 +151,10 @@ public class TestConsole {
 		System.out.println("Sélectionner le nom de l'élève à ajouter à la maison?");
 		String nom = clavierStr.nextLine().toLowerCase();
 		
-		daoE.selectByName("nom");
-		// Modifier la maison de l'élève et le rajouter à la liste élève de la maison
-		// retourner au menu ajouter élève
+		Eleve e = daoE.selectByName("nom");
+		maisonSelect.addE(e);
+		e.setMaison(maisonSelect);
+		
 	
 		}
 
@@ -164,9 +165,12 @@ public class TestConsole {
 		System.out.println("Choisir le nouveau professeur principal de la maison?");
 		String nom = clavierStr.nextLine().toLowerCase();
 		
-		daoP.selectByName("nom");
-		// Modifier la maison de l'élève et le rajouter à la liste élève de la maison
-		// retourner au menu ajouter élève
+		Professeur p = daoP.selectByName("nom");
+		Maison m = daoMai.selectByName(maisonSelect);
+		
+		m.setProfesseur(p);
+		
+		
 	}
 
 	private static void gestionEleves() {

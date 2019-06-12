@@ -27,4 +27,9 @@ public class Professeur extends Sorcier {
 		this.matiere = matiere;
 	}
 
+	public void addProf(Maison m) {
+		
+		
+	}
+
 }
