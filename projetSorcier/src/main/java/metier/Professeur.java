@@ -19,6 +19,14 @@ public class Professeur extends Sorcier {
 		this.matiere = matiere;
 	}
 
+	public Professeur(String nom, String prenom, Integer age, Civilite civ, Patronus patronus, Matiere matiere) {
+		super(nom, prenom, age, civ, patronus);
+		this.matiere = matiere;
+	}
+
+	public Professeur(String nom, String prenom, Integer age, Civilite civ, Patronus patronus) {
+	}
+
 	public Matiere getMatiere() {
 		return matiere;
 	}

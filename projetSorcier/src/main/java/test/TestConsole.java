@@ -154,7 +154,6 @@ public class TestConsole {
 		Eleve e = daoE.selectByName("nom");
 		maisonSelect.addE(e);
 		e.setMaison(maisonSelect);
-		
 	
 		}
 
@@ -256,6 +255,38 @@ public class TestConsole {
 			System.out.println("ERREUR, veuillez taper le chiffre correspondant à la carte de gestion demandée");
 		}
 
+	}
+
+	private static void addProf() {
+		System.out.print("Nom?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		System.out.print("Prénom?");
+		String prenom = clavierStr.nextLine().toLowerCase();
+		System.out.print("Age?");
+		Integer age = clavierStr.nextInt();
+		System.out.print("M / Mme?");
+		Civilite civ = Civilite.valueOf(clavierStr.nextLine().toLowerCase());
+		System.out.print("Patronus?");
+		Patronus patronus = Patronus.valueOf(clavierStr.nextLine().toLowerCase());
+		System.out.print("Matière?");
+		String matiere = clavierStr.nextLine().toLowerCase();
+		daoMat.selectByName(matiere);
+		
+		Professeur p = new Professeur (nom, prenom, age, civ, patronus);
+		p.setMatiere(daoMat.selectByName(matiere));
+		daoP.insert(p);
+		
+	}
+
+	private static void updateProf() {
+		System.out.println("Quel est le nom du professeur?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		System.out.println("Quelle est sa nouvelle matière?");
+		String matiere = clavierStr.nextLine().toLowerCase();
+		
+		Professeur p = daoP.selectByName(nom);
+		p.setMatiere(daoMat.selectByName(matiere));
+		
 	}
 
 	private static void gestionMatieres() {

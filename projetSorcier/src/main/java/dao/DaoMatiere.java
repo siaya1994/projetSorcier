@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import application.Context;
 import metier.Matiere;
+import metier.Matiere;
 
 public class DaoMatiere implements DAO<Matiere, Integer> {
 
@@ -24,7 +25,16 @@ public class DaoMatiere implements DAO<Matiere, Integer> {
 		Context.destroy();
 	}
 	
-
+	public  Matiere selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Matiere s = em.find(Matiere.class, nom);
+		em.close();
+		Context.destroy();
+		return s;
+	}
+	
 	public Matiere selectById(Integer id) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
@@ -49,8 +59,6 @@ public class DaoMatiere implements DAO<Matiere, Integer> {
 		em.close();
 		
 		Context.destroy();
-		
-
 	}
 
 	public void delete(Matiere object) {
@@ -69,20 +77,6 @@ public class DaoMatiere implements DAO<Matiere, Integer> {
 		
 	}
 
-
-
-	public List<Matiere> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Matiere.findWithGrades", Matiere.class);
-		List<Matiere> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
-		
-	}
-	
 	public List<Matiere> selectAll(){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
@@ -95,29 +89,5 @@ public class DaoMatiere implements DAO<Matiere, Integer> {
 		return list;
 		
 	}
-		
-//		public List<Matiere> selectAllWithGun() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Matiere, weapons where Matiere.weapon_id(+)=weapon.id and weapon_type = 'gun' ", Matiere.class);
-//			List<Matiere> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
-//		public List<Matiere> selectAllWithSword() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Matiere, weapons where Matiere.weapon_id(+)=weapon.id and weapon_type = 'sword' ", Matiere.class);
-//			List<Matiere> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
+	
 }
