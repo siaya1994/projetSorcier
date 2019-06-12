@@ -9,8 +9,6 @@ import javax.persistence.*;
 public class Professeur extends Sorcier {
 
 	@OneToOne(mappedBy="professeur")
-	private Maison maison;
-	@OneToOne
 	private Matiere matiere;
 
 	public Professeur() {
@@ -29,6 +27,11 @@ public class Professeur extends Sorcier {
 
 	public void setMatiere(Matiere matiere) {
 		this.matiere = matiere;
+	}
+
+	public void addProf(Maison m) {
+		
+		
 	}
 
 }

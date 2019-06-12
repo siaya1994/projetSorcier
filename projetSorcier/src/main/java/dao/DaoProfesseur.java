@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import application.Context;
 import metier.Professeur;
+import metier.Professeur;
 
 public class DaoProfesseur implements DAO<Professeur, Integer> {
 
@@ -30,6 +31,16 @@ public class DaoProfesseur implements DAO<Professeur, Integer> {
 		EntityManager em = emf.createEntityManager();
 		
 		Professeur s = em.find(Professeur.class, id);
+		em.close();
+		Context.destroy();
+		return s;
+	}
+	
+	public  Professeur selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Professeur s = em.find(Professeur.class, nom);
 		em.close();
 		Context.destroy();
 		return s;

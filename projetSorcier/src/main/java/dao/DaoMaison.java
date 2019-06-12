@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import application.Context;
 import metier.Maison;
+import metier.Matiere;
 
 public class DaoMaison implements DAO<Maison, Integer> {
 
@@ -24,12 +25,21 @@ public class DaoMaison implements DAO<Maison, Integer> {
 		Context.destroy();
 	}
 	
-
 	public Maison selectById(Integer id) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		
 		Maison s = em.find(Maison.class, id);
+		em.close();
+		Context.destroy();
+		return s;
+	}
+	
+	public  Maison selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Maison s = em.find(Maison.class, nom);
 		em.close();
 		Context.destroy();
 		return s;
