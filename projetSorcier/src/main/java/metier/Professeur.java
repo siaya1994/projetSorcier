@@ -21,6 +21,8 @@ public class Professeur extends Sorcier {
 		this.matiere = matiere;
 	}
 
+
+
 	public Matiere getMatiere() {
 		return matiere;
 	}
