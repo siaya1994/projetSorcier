@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import application.Context;
 import metier.Eleve;
+import metier.Eleve;
 
 public class DaoEleve implements DAO<Eleve, Integer> {
 
@@ -30,6 +31,16 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		EntityManager em = emf.createEntityManager();
 		
 		Eleve s = em.find(Eleve.class, id);
+		em.close();
+		Context.destroy();
+		return s;
+	}
+	
+	public  Eleve selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Eleve s = em.find(Eleve.class, nom);
 		em.close();
 		Context.destroy();
 		return s;
@@ -66,20 +77,6 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		em.close();
 		
 		Context.destroy();
-		
-	}
-
-
-
-	public List<Eleve> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Eleve.findWithGrades", Eleve.class);
-		List<Eleve> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
 		
 	}
 	
