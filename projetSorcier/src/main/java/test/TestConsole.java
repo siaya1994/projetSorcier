@@ -17,12 +17,12 @@ public class TestConsole {
 	static String maisonSelect;
 
 	static DaoProfesseur daoP = new DaoProfesseur();
-    static DaoEleve daoE = new DaoEleve();
+	static DaoEleve daoE = new DaoEleve();
 	static DaoMaison daoMai = new DaoMaison();
 	static DaoMatiere daoMat = new DaoMatiere();
 	static DaoSort daoS = new DaoSort();
-	
-//ok
+
+	// ok
 	public static void console() {
 
 		System.out.println(
@@ -52,7 +52,7 @@ public class TestConsole {
 
 	}
 
-	//ok
+	// ok
 	public static void gestionMaisons() {
 		System.out.println(
 				"GESTION DES MAISONS! \nQuelles sont vos intentions? \nAjouter une maison -> 1 \nConsulter une maison -> 2 "
@@ -83,7 +83,8 @@ public class TestConsole {
 		Maison maiG = new Maison("nom");
 		daoMai.insert(maiG);
 	}
-	//ok
+
+	// ok
 	public static void seeMaison() {
 		System.out.println(
 				"Choisir une maison :  \nGryffondor -> 1 \nPoufsouffle -> 2 " + "\nSerdaigle -> 3 \nSerpentard -> 4");
@@ -113,7 +114,7 @@ public class TestConsole {
 		}
 	}
 
-	//ok
+	// ok
 	private static void updateMaison() {
 
 		System.out.println("Quelles sont vos intentions? \nAjouter des points -> 1 \nAjouter un élève -> 2 "
@@ -150,13 +151,12 @@ public class TestConsole {
 		}
 		System.out.println("Sélectionner le nom de l'élève à ajouter à la maison?");
 		String nom = clavierStr.nextLine().toLowerCase();
-		
+
 		Eleve e = daoE.selectByName("nom");
 		maisonSelect.addE(e);
 		e.setMaison(maisonSelect);
-		
-	
-		}
+
+	}
 
 	private static void selectProf() {
 		for (Professeur p : daoP.selectAll()) {
@@ -164,13 +164,12 @@ public class TestConsole {
 		}
 		System.out.println("Choisir le nouveau professeur principal de la maison?");
 		String nom = clavierStr.nextLine().toLowerCase();
-		
+
 		Professeur p = daoP.selectByName("nom");
 		Maison m = daoMai.selectByName(maisonSelect);
-		
+
 		m.setProfesseur(p);
-		
-		
+
 	}
 
 	private static void gestionEleves() {
@@ -211,7 +210,6 @@ public class TestConsole {
 		Eleve e = new Eleve(nom, prenom, age, civ, patronus);
 		daoMai.insert(maiG);
 	}
-
 
 	public static void updateEleve() {
 		System.out.println("Quelles sont vos intentions? \nChoisir une maison -> 1 \nChoisir une matière -> 2 "
@@ -281,4 +279,64 @@ public class TestConsole {
 
 	}
 
+	public static void addMatiere() {
+		System.out.print("Nom de la matiere?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		Matiere mat = new Matiere("nom");
+		daoMat.insert(mat);
+
+	}
+
+	public static void updateMatiere() {
+
+		System.out.println("Quelles sont vos intentions? \nAjouter un sort -> 1 \nChanger de professeur -> 2 "
+				+ "\nSupprimer un sort -> 3 \nMéfait accompli -> 4");
+		switch (choixI) {
+		case 1:
+			addSort();
+			;
+			break;
+		case 2:
+			switchProf();
+			;
+			break;
+		case 3:
+			deleteSort();
+			;
+			break;
+		case 4:
+			System.out.println("A bientôt");
+			break;
+		default:
+			System.out.println("ERREUR, veuillez taper le chiffre correspondant à la carte de gestion demandée");
+		}
+	}
+
+	private static void addSort() {
+		System.out.print("Nom du sort à ajouter?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		Sort sort = new Sort();
+		daoS.insert(sort);
+
+	}
+
+	public static void switchProf() {
+
+		System.out.println("Saisir le nom de la matière?");
+		String matiere = clavierStr.nextLine().toLowerCase();
+		System.out.println("Quel est le nom du nouveau professeur?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		daoMat.selectByName(matiere).setProfesseur(nom);
+
+	}
+
+	public static void deleteSort() {
+
+		for (Sort s : daoS.selectAll()) {
+			System.out.println(s);
+		}
+		System.out.println("Quel sort voulez-vous supprimer?");
+		String sort = clavierStr.nextLine().toLowerCase();
+		daoS.selectByName(sort).delete();
+	}
 }
