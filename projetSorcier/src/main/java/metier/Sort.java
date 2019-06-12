@@ -10,9 +10,8 @@ public class Sort {
 	private String libelle;
 	@ManyToOne
 	private Matiere matiere;
+	@Enumerated(EnumType.STRING)
 	private Type_sort type_sort;
-	
-	
 	
 	
 	public Sort() {

@@ -5,7 +5,6 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-
 public class Matiere {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -15,7 +14,6 @@ public class Matiere {
 	private Professeur professeur;
 	@OneToMany
 	private List<Sort> sort = new ArrayList();
-	
 	
 	
 	
@@ -60,6 +58,11 @@ public class Matiere {
 	}
 	public void setProfesseur(Professeur professeur) {
 		this.professeur = professeur;
+	}
+
+	public void setProfesseur(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
