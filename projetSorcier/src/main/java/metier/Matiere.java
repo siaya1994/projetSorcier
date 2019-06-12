@@ -10,7 +10,7 @@ public class Matiere {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
-	@OneToOne(mappedBy="matiere")
+	@OneToOne
 	private Professeur professeur;
 	@OneToMany
 	private List<Sort> sort = new ArrayList();

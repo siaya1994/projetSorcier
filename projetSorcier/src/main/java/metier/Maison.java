@@ -24,6 +24,11 @@ public class Maison {
 		this.nom = nom;
 	}
 	
+	public Maison(String nom, Integer score) {
+		
+	}
+
+
 	public String toString() {
 		return "Maison [nom=" + nom + ", score=" + score + ", professeur=" + professeur + ", eleves=" + eleves + "]";
 	}
@@ -42,6 +47,10 @@ public class Maison {
 
 	public void setScore(Integer score) {
 		this.score = score;
+	}
+	
+	public void addPts (Integer i) {
+		this.score += i;
 	}
 
 	public Professeur getProfesseur() {
