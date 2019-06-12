@@ -8,6 +8,7 @@ public class Sort {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String libelle;
+	@ManyToOne
 	private Matiere matiere;
 	private Type_sort type_sort;
 	

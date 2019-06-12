@@ -1,6 +1,6 @@
 package metier;
 
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -10,17 +10,17 @@ import javax.persistence.*;
 public class Eleve extends Sorcier {
 	
 	
-	
+	@ManyToOne
 	private Maison maison;
 	
 	@ManyToMany
-	private List<Matiere> matieres;
+	private List<Matiere> matieres = new ArrayList();
 	
 	
 	public Eleve(){}
 
 	
-	public Eleve( String nom, String prenom, Integer age, Civilite civ, Patronus patronus, Maison maison, List<Matiere> matieres) {
+	public Eleve( String nom, String prenom, Integer age, Civilite civ, Patronus patronus) {
 		super (nom, prenom, age, civ, patronus);
 		this.maison = maison;
 		this.matieres = matieres;

@@ -4,35 +4,29 @@ import java.util.*;
 
 import javax.persistence.*;
 
+@Entity
 @DiscriminatorValue("professeur")
+public class Professeur extends Sorcier {
 
-public class Professeur extends Sorcier{
+	@OneToOne(mappedBy="professeur")
+	private Maison maison;
+	@OneToOne
+	private Matiere matiere;
 
-@OneToOne
-private Matiere matiere ;
+	public Professeur() {
+	}
 
+	public Professeur(Matiere matiere) {
+		super();
+		this.matiere = matiere;
+	}
 
-public Professeur(){}
+	public Matiere getMatiere() {
+		return matiere;
+	}
 
-
-public Professeur(Matiere matiere) {
-	super();
-	this.matiere = matiere;
-}
-
-
-public Matiere getMatiere() {
-	return matiere;
-}
-
-
-public void setMatiere(Matiere matiere) {
-	this.matiere = matiere;
-}
-
-
-
-
-
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
+	}
 
 }
