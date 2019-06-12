@@ -4,8 +4,12 @@ import java.util.*;
 
 import javax.persistence.*;
 
+@Entity
 public class Maison {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String nom;
 	private Integer score;
 	@OneToOne
@@ -17,7 +21,6 @@ public class Maison {
 	
 
 	public Maison(String nom) {
-
 		this.nom = nom;
 	}
 	
