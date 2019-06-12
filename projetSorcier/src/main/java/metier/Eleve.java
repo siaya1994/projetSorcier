@@ -19,11 +19,6 @@ public class Eleve extends Sorcier {
 	
 	public Eleve(){}
 
-	public Eleve(Maison maison, List<Matiere> matieres) {
-		super();
-		this.maison = maison;
-		this.matieres = matieres;
-	}
 	
 	public Eleve( String nom, String prenom, Integer age, Civilite civ, Patronus patronus, Maison maison, List<Matiere> matieres) {
 		super (nom, prenom, age, civ, patronus);

@@ -12,8 +12,6 @@ public class Sort {
 	private Type_sort type_sort;
 	
 	
-	
-	
 	public Sort() {
 	
 	}

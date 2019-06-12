@@ -17,7 +17,7 @@ public class DaoMatiere implements DAO<Matiere, Integer> {
 		em.getTransaction().begin();
 		
 		em.persist(object);
-		
+
 		em.getTransaction().commit();
 		
 		em.close();

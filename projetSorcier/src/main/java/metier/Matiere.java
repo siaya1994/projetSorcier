@@ -59,6 +59,11 @@ public class Matiere {
 	public void setProfesseur(Professeur professeur) {
 		this.professeur = professeur;
 	}
+
+	public void setProfesseur(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
