@@ -1,6 +1,6 @@
 package metier;
 
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -10,11 +10,11 @@ import javax.persistence.*;
 public class Eleve extends Sorcier {
 	
 	
-	
+	@ManyToOne
 	private Maison maison;
 	
 	@ManyToMany
-	private List<Matiere> matieres;
+	private List<Matiere> matieres = new ArrayList();
 	
 	
 	public Eleve(){}
