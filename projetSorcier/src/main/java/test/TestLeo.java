@@ -30,8 +30,7 @@ public class TestLeo {
 		Maison maison = new Maison("Gryffondor");
 		Maison maison2 = new Maison("Serpentard");
 		
-		Sort s = new Sort();
-		
+
 		
 		daoMat.insert(m);
 		daoP.insert(p);

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import application.Context;
+import metier.Maison;
 import metier.Matiere;
 
 public class DaoMatiere implements DAO<Matiere, Integer> {
@@ -33,6 +34,16 @@ public class DaoMatiere implements DAO<Matiere, Integer> {
 		em.close();
 		Context.destroy();
 		return s;
+	}
+	
+	public  Matiere selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Matiere m = em.find(Matiere.class, nom);
+		em.close();
+		Context.destroy();
+		return m;
 	}
 
 	public void update(Matiere object) {

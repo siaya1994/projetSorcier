@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import application.Context;
 import metier.Eleve;
+import metier.Maison;
 
 public class DaoEleve implements DAO<Eleve, Integer> {
 
@@ -23,6 +24,17 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		em.close();
 		Context.destroy();
 	}
+	
+	public  Eleve selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Eleve e = em.find(Eleve.class, nom);
+		em.close();
+		Context.destroy();
+		return e;
+	}
+
 	
 
 	public Eleve selectById(Integer id) {

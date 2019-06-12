@@ -42,6 +42,10 @@ public class Eleve extends Sorcier {
 	public void setMatieres(List<Matiere> matieres) {
 		this.matieres = matieres;
 	}
+	
+	public void addMatiere (Matiere matiere) {
+		this.matieres.add(matiere);
+	}
 
 
 	

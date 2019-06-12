@@ -14,10 +14,11 @@ public class TestConsole {
 	static int choixI = clavierInt.nextInt();
 	static Scanner clavierStr = new Scanner(System.in);
 
-	static String maisonSelect;
+	static Maison maisonSelect;
+	static Eleve eleveSelect;
 
-	static DaoProfesseur doaP = new DaoProfesseur();
-	static DaoEleve doaE = new DaoEleve();
+	static DaoProfesseur daoP = new DaoProfesseur();
+	static DaoEleve daoE = new DaoEleve();
 	static DaoMaison daoMai = new DaoMaison();
 	static DaoMatiere daoMat = new DaoMatiere();
 	static DaoSort daoS = new DaoSort();
@@ -146,7 +147,7 @@ public class TestConsole {
 	private static void selectEleve() {
 		for (Eleve e : daoE.selectAll()) {
 
-			System.out.println(s);
+			System.out.println(e);
 		}
 
 	}
@@ -164,6 +165,9 @@ public class TestConsole {
 			addEleve();
 			break;
 		case 2:
+			System.out.println("choisissez un eleve a modifer: ");
+			String prenom = clavierStr.nextLine().toLowerCase();
+			eleveSelect = daoE.selectByName(prenom);
 			updateEleve();
 			break;
 		case 3:
@@ -185,10 +189,10 @@ public class TestConsole {
 		System.out.print("Age?");
 		Integer age = clavierStr.nextInt();
 		System.out.print("M / Mme?");
-		String civ = clavierStr.nextLine();
+		Civilite civ = Civilite.valueOf(clavierStr.nextLine());
 		Maison maiG = new Maison("nom");
 		System.out.print("Patronus?");
-		Integer patronus = clavierStr.nextInt();
+		Patronus patronus = Patronus.valueOf(clavierStr.nextLine());
 
 		Eleve e = new Eleve(nom, prenom, age, civ, patronus);
 		daoMai.insert(maiG);
@@ -200,13 +204,18 @@ public class TestConsole {
 				+ "\nAfficher les sorts -> 3 \nMéfait accompli -> 4");
 		switch (choixI) {
 		case 1:
-			;
+			System.out.println("choisissez la maison a lui affecter : ");
+			String maison = clavierStr.nextLine().toLowerCase();		
+			eleveSelect.setMaison(daoMai.selectByName(maison));
 			break;
 		case 2:
-			;
+			System.out.println("choisissez une matière a lui affecter : ");
+			String matiere = clavierStr.nextLine().toLowerCase();		
+			eleveSelect.addMatiere(daoMat.selectByName(matiere));
 			break;
 		case 3:
-			;
+			for (Matiere m : eleveSelect.getMatieres())
+			System.out.println(m);
 			break;
 		case 4:
 			System.out.println("A bientôt");
