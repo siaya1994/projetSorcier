@@ -30,6 +30,8 @@ public abstract class Sorcier {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
+		this.civ = civ;
+		this.patronus = patronus;
 	}
 	
 	public Sorcier(Integer id, String nom, String prenom, Integer age, Civilite civ, Patronus patronus) {

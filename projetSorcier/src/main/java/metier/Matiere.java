@@ -24,7 +24,11 @@ public class Matiere {
 	public Matiere(String nom) {
 		this.nom = nom;
 	}
-
+	
+	public Matiere(String nom, Professeur professeur) {
+		this.nom = nom;
+		this.professeur = professeur;
+	}
 
 	public String getNom() {
 		return nom;
