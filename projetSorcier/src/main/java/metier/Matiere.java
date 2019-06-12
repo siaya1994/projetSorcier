@@ -5,7 +5,6 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-
 public class Matiere {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
