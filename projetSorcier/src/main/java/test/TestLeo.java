@@ -18,6 +18,7 @@ public class TestLeo {
 		DaoProfesseur daoP = new DaoProfesseur();
 		DaoMaison daoM = new DaoMaison();
 		DaoMatiere daoMat = new DaoMatiere();
+		
 		Professeur p = new Professeur();
 		p.setNom("Dumbledore");
 		p.setPrenom("Albus");
@@ -29,6 +30,7 @@ public class TestLeo {
 		Maison maison = new Maison("Gryffondor");
 		Maison maison2 = new Maison("Serpentard");
 		
+		Sort s = new Sort();
 		
 		
 		daoMat.insert(m);
