@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import application.Context;
 import metier.Professeur;
+import metier.Professeur;
 
 public class DaoProfesseur implements DAO<Professeur, Integer> {
 
@@ -30,6 +31,16 @@ public class DaoProfesseur implements DAO<Professeur, Integer> {
 		EntityManager em = emf.createEntityManager();
 		
 		Professeur s = em.find(Professeur.class, id);
+		em.close();
+		Context.destroy();
+		return s;
+	}
+	
+	public  Professeur selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Professeur s = em.find(Professeur.class, nom);
 		em.close();
 		Context.destroy();
 		return s;
@@ -68,20 +79,6 @@ public class DaoProfesseur implements DAO<Professeur, Integer> {
 		Context.destroy();
 		
 	}
-
-
-
-	public List<Professeur> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Professeur.findWithGrades", Professeur.class);
-		List<Professeur> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
-		
-	}
 	
 	public List<Professeur> selectAll(){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
@@ -95,29 +92,4 @@ public class DaoProfesseur implements DAO<Professeur, Integer> {
 		return list;
 		
 	}
-		
-//		public List<Professeur> selectAllWithGun() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Professeur, weapons where Professeur.weapon_id(+)=weapon.id and weapon_type = 'gun' ", Professeur.class);
-//			List<Professeur> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
-//		public List<Professeur> selectAllWithSword() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Professeur, weapons where Professeur.weapon_id(+)=weapon.id and weapon_type = 'sword' ", Professeur.class);
-//			List<Professeur> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
 }

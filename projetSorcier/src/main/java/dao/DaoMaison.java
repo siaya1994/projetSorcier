@@ -78,20 +78,6 @@ public class DaoMaison implements DAO<Maison, Integer> {
 		Context.destroy();
 		
 	}
-
-
-
-	public List<Maison> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Maison.findWithGrades", Maison.class);
-		List<Maison> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
-		
-	}
 	
 	public List<Maison> selectAll(){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
@@ -105,29 +91,5 @@ public class DaoMaison implements DAO<Maison, Integer> {
 		return list;
 		
 	}
-		
-//		public List<Maison> selectAllWithGun() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Maison, weapons where Maison.weapon_id(+)=weapon.id and weapon_type = 'gun' ", Maison.class);
-//			List<Maison> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
-//		public List<Maison> selectAllWithSword() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Maison, weapons where Maison.weapon_id(+)=weapon.id and weapon_type = 'sword' ", Maison.class);
-//			List<Maison> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
+	
 }

@@ -69,20 +69,6 @@ public class DaoSorcier implements DAO<Sorcier, Integer> {
 		
 	}
 
-
-
-	public List<Sorcier> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Sorcier.findWithGrades", Sorcier.class);
-		List<Sorcier> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
-		
-	}
-	
 	public List<Sorcier> selectAll(){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
@@ -95,29 +81,5 @@ public class DaoSorcier implements DAO<Sorcier, Integer> {
 		return list;
 		
 	}
-		
-//		public List<Sorcier> selectAllWithGun() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Sorcier, weapons where Sorcier.weapon_id(+)=weapon.id and weapon_type = 'gun' ", Sorcier.class);
-//			List<Sorcier> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
-//		public List<Sorcier> selectAllWithSword() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Sorcier, weapons where Sorcier.weapon_id(+)=weapon.id and weapon_type = 'sword' ", Sorcier.class);
-//			List<Sorcier> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
+	
 }

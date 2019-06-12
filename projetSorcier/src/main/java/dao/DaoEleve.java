@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import application.Context;
-import metier.Eleve;
-import metier.Maison;
+import metier.*;
+
 
 public class DaoEleve implements DAO<Eleve, Integer> {
 
@@ -25,15 +25,6 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		Context.destroy();
 	}
 	
-	public  Eleve selectByName(String nom) {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Eleve e = em.find(Eleve.class, nom);
-		em.close();
-		Context.destroy();
-		return e;
-	}
 
 	
 
@@ -42,6 +33,16 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		EntityManager em = emf.createEntityManager();
 		
 		Eleve s = em.find(Eleve.class, id);
+		em.close();
+		Context.destroy();
+		return s;
+	}
+	
+	public  Eleve selectByName(String nom) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		
+		Eleve s = em.find(Eleve.class, nom);
 		em.close();
 		Context.destroy();
 		return s;
@@ -80,20 +81,6 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		Context.destroy();
 		
 	}
-
-
-
-	public List<Eleve> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Eleve.findWithGrades", Eleve.class);
-		List<Eleve> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
-		
-	}
 	
 	public List<Eleve> selectAll(){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
@@ -107,29 +94,5 @@ public class DaoEleve implements DAO<Eleve, Integer> {
 		return list;
 		
 	}
-		
-//		public List<Eleve> selectAllWithGun() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Eleve, weapons where Eleve.weapon_id(+)=weapon.id and weapon_type = 'gun' ", Eleve.class);
-//			List<Eleve> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
-//		public List<Eleve> selectAllWithSword() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Eleve, weapons where Eleve.weapon_id(+)=weapon.id and weapon_type = 'sword' ", Eleve.class);
-//			List<Eleve> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
+	
 }

@@ -23,7 +23,7 @@ public class TestConsole {
 	static DaoMatiere daoMat = new DaoMatiere();
 	static DaoSort daoS = new DaoSort();
 	
-
+//ok
 	public static void console() {
 
 		System.out.println(
@@ -53,6 +53,7 @@ public class TestConsole {
 
 	}
 
+	//ok
 	public static void gestionMaisons() {
 		System.out.println(
 				"GESTION DES MAISONS! \nQuelles sont vos intentions? \nAjouter une maison -> 1 \nConsulter une maison -> 2 "
@@ -83,7 +84,7 @@ public class TestConsole {
 		Maison maiG = new Maison("nom");
 		daoMai.insert(maiG);
 	}
-
+	//ok
 	public static void seeMaison() {
 		System.out.println(
 				"Choisir une maison :  \nGryffondor -> 1 \nPoufsouffle -> 2 " + "\nSerdaigle -> 3 \nSerpentard -> 4");
@@ -113,6 +114,7 @@ public class TestConsole {
 		}
 	}
 
+	//ok
 	private static void updateMaison() {
 
 		System.out.println("Quelles sont vos intentions? \nAjouter des points -> 1 \nAjouter un élève -> 2 "
@@ -141,19 +143,34 @@ public class TestConsole {
 		System.out.println("Combien de points voulez-vous ajouter à la maison?");
 		Integer addpts = clavierInt.nextInt();
 		maisonSelect.addPts(addpts);
-
 	}
 
 	private static void selectEleve() {
 		for (Eleve e : daoE.selectAll()) {
-
 			System.out.println(e);
 		}
-
-	}
+		System.out.println("Sélectionner le nom de l'élève à ajouter à la maison?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		
+		Eleve e = daoE.selectByName("nom");
+		maisonSelect.addE(e);
+		e.setMaison(maisonSelect);
+	
+		}
 
 	private static void selectProf() {
-
+		for (Professeur p : daoP.selectAll()) {
+			System.out.println(p);
+		}
+		System.out.println("Choisir le nouveau professeur principal de la maison?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		
+		Professeur p = daoP.selectByName("nom");
+		Maison m = daoMai.selectByName(maisonSelect);
+		
+		m.setProfesseur(p);
+		
+		
 	}
 
 	private static void gestionEleves() {
@@ -247,6 +264,38 @@ public class TestConsole {
 			System.out.println("ERREUR, veuillez taper le chiffre correspondant à la carte de gestion demandée");
 		}
 
+	}
+
+	private static void addProf() {
+		System.out.print("Nom?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		System.out.print("Prénom?");
+		String prenom = clavierStr.nextLine().toLowerCase();
+		System.out.print("Age?");
+		Integer age = clavierStr.nextInt();
+		System.out.print("M / Mme?");
+		Civilite civ = Civilite.valueOf(clavierStr.nextLine().toLowerCase());
+		System.out.print("Patronus?");
+		Patronus patronus = Patronus.valueOf(clavierStr.nextLine().toLowerCase());
+		System.out.print("Matière?");
+		String matiere = clavierStr.nextLine().toLowerCase();
+		daoMat.selectByName(matiere);
+		
+		Professeur p = new Professeur (nom, prenom, age, civ, patronus);
+		p.setMatiere(daoMat.selectByName(matiere));
+		daoP.insert(p);
+		
+	}
+
+	private static void updateProf() {
+		System.out.println("Quel est le nom du professeur?");
+		String nom = clavierStr.nextLine().toLowerCase();
+		System.out.println("Quelle est sa nouvelle matière?");
+		String matiere = clavierStr.nextLine().toLowerCase();
+		
+		Professeur p = daoP.selectByName(nom);
+		p.setMatiere(daoMat.selectByName(matiere));
+		
 	}
 
 	private static void gestionMatieres() {

@@ -70,19 +70,6 @@ public class DaoSort implements DAO<Sort, Integer> {
 	}
 
 
-
-	public List<Sort> selectAllWithGrade() {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createNamedQuery("Sort.findWithGrades", Sort.class);
-		List<Sort> liste = query.getResultList();
-		em.close();
-		Context.destroy();
-		return liste;
-		
-	}
-	
 	public List<Sort> selectAll(){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
@@ -95,29 +82,5 @@ public class DaoSort implements DAO<Sort, Integer> {
 		return list;
 		
 	}
-		
-//		public List<Sort> selectAllWithGun() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Sort, weapons where Sort.weapon_id(+)=weapon.id and weapon_type = 'gun' ", Sort.class);
-//			List<Sort> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
-//		public List<Sort> selectAllWithSword() {
-//			EntityManagerFactory emf = Context.getInstance().getEmf();
-//			EntityManager em = emf.createEntityManager();
-//			
-//			Query query = em.createNativeQuery(
-//					"SELECT*FROM Sort, weapons where Sort.weapon_id(+)=weapon.id and weapon_type = 'sword' ", Sort.class);
-//			List<Sort> liste = query.getResultList();
-//			em.close();
-//			Context.destroy();
-//			return liste;
-//			
-//		}
+	
 }
